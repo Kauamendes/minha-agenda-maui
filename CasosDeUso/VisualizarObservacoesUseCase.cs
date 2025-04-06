@@ -16,6 +16,7 @@ namespace CasosDeUso
 
         public Task<List<Observacao>> ExecutaList()
         {
+
             return _repositorioDeObservacoes.BuscarObservacoes();
         }
     }

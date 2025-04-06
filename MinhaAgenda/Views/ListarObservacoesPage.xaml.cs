@@ -1,30 +1,37 @@
 using System.Collections.ObjectModel;
 using CasosDeUso.Interface;
 using CoreBusiness.Entidades;
+using MinhaAgenda.Views;
 
 namespace MinhaAgenda.Views;
 
 public partial class ListarObservacoesPage : ContentPage
 {
-
     private readonly IVisualizarObservacoesUseCase _visualizarObservacoesUseCase;
 
-    public ListarObservacoesPage(IVisualizarObservacoesUseCase visualizarContatosUseCase)
+    public ListarObservacoesPage(IVisualizarObservacoesUseCase visualizarObservacoesUseCase)
     {
         InitializeComponent();
-        this._visualizarObservacoesUseCase = visualizarContatosUseCase;
+        _visualizarObservacoesUseCase = visualizarObservacoesUseCase;
     }
 
     protected override void OnAppearing()
     {
         base.OnAppearing();
-        CarregarObservacoes();
+        _ = CarregarObservacoesAsync();
     }
 
-    private async void CarregarObservacoes()
+    private async Task CarregarObservacoesAsync()
     {
-        var observacoes = new ObservableCollection<Observacao>(await _visualizarObservacoesUseCase.ExecutaList());
-        listaObservacoes.ItemsSource = observacoes;
+        try
+        {
+            var resultado = await _visualizarObservacoesUseCase.ExecutaList();
+            listaObservacoes.ItemsSource = new ObservableCollection<Observacao>(resultado);
+        }
+        catch (Exception ex)
+        {
+            await DisplayAlert("Erro", $"Erro ao carregar observações: {ex.Message}", "OK");
+        }
     }
 
     private async void Button_Clicked(object sender, EventArgs e)
