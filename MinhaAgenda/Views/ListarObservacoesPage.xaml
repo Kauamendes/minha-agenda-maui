@@ -28,6 +28,12 @@
                             <Label Text="{Binding Texto}"
                                    FontSize="16"
                                    TextColor="Black" />
+                            <Button Text="🗑️"
+                                    BackgroundColor="Transparent"
+                                    TextColor="Red"
+                                    Clicked="ExcluirObservacao_Clicked"
+                                    CommandParameter="{Binding .}"
+                                    Grid.Column="1"/>
                         </Grid>
                     </Frame>
                 </DataTemplate>

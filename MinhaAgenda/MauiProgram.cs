@@ -37,6 +37,7 @@ namespace MinhaAgenda
 
             builder.Services.AddSingleton<IAdicionarObservacoesUseCase, AdicionarObservacaoUseCase>();
             builder.Services.AddSingleton<IVisualizarObservacoesUseCase, VisualizarObservacoesUseCase>();
+            builder.Services.AddSingleton<IApagarObservacaoUseCase, ApagarObservacaoUseCase>();
 
             #endregion
             builder.Services.AddSingleton<ContatosPage>();

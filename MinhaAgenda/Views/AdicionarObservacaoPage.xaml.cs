@@ -27,6 +27,7 @@ public partial class AdicionarObservacaoPage : ContentPage
         {
             var observacao = new Observacao(texto);
             await _adicionarObservacaoUseCase.ExecutaAsync(observacao);
+            textoObservacao.Text = string.Empty;
             await Shell.Current.GoToAsync(".."); // Volta para a tela anterior
         }
         catch (Exception ex)

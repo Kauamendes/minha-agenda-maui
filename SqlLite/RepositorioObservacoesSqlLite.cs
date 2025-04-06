@@ -34,5 +34,27 @@ namespace MinhaAgenda.Plugins.SqlLite
 
             return await _database.Table<Observacao>().ToListAsync();
         }
+
+        public Task<Observacao> BuscarObservacaoPorId(Guid id)
+        {
+            return BuscarObservacaoPorIdAsync(id);
+        }
+
+        public async Task<Observacao> BuscarObservacaoPorIdAsync(Guid id)
+        {
+            return await _database.Table<Observacao>().Where(c => c.Id == id).FirstOrDefaultAsync();
+        }
+
+        public Task ExcluirObservacao(Observacao observacao)
+        {
+            return Task.FromResult(ExcluirObservacaoAsync(observacao));
+        }
+
+        public async Task ExcluirObservacaoAsync(Observacao observacao)
+        {
+            var observacaoExcluir = await BuscarObservacaoPorId(observacao.Id);
+            if (observacaoExcluir != null && observacao.Id.Equals(observacaoExcluir.Id))
+                await _database.DeleteAsync(observacaoExcluir);
+        }
     }
 }
