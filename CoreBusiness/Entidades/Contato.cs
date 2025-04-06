@@ -1,5 +1,5 @@
-﻿using SQLite;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
+using SQLite;
 
 namespace CoreBusiness.Entidades
 {
@@ -7,7 +7,7 @@ namespace CoreBusiness.Entidades
     {
         public Contato()
         {
-            
+
         }
 
         public Contato(string nome, string? fone, string? email, string endereco)

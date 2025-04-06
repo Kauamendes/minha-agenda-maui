@@ -23,19 +23,29 @@ namespace MinhaAgenda
                 });
 
 #if DEBUG
-    		builder.Logging.AddDebug();
+            builder.Logging.AddDebug();
 #endif
             #region injeção de dependências
             builder.Services.AddSingleton<IRepositorioDeContatos, RepositorioContatosSqlLite>();
+            builder.Services.AddSingleton<IRepositorioDeObservacoes, RepositorioObservacaoSqlLite>();
             //builder.Services.AddSingleton<IRepositorioDeContatos, Plugins.DadosEmMemoria.Dados>();
+
             builder.Services.AddSingleton<IVisualizarContatosUseCase, VisualizarContatosUseCase>();
             builder.Services.AddSingleton<IApagarContatoUseCase, ApagarContatosUseCase>();
             builder.Services.AddSingleton<IAdicionarContatoUseCase, AdicionarContatoUseCase>();
             builder.Services.AddSingleton<IEditarContatoUseCase, EditarContatoUseCase>();
+
+            builder.Services.AddSingleton<IAdicionarObservacoesUseCase, AdicionarObservacaoUseCase>();
+            builder.Services.AddSingleton<IVisualizarObservacoesUseCase, VisualizarObservacoesUseCase>();
+
             #endregion
             builder.Services.AddSingleton<ContatosPage>();
             builder.Services.AddSingleton<EditarContatoPage>();
             builder.Services.AddSingleton<AdicionarContatoPage>();
+
+            builder.Services.AddSingleton<AdicionarObservacaoPage>();
+            builder.Services.AddSingleton<ListarObservacoesPage>();
+
             return builder.Build();
         }
     }

@@ -18,7 +18,7 @@ namespace CasosDeUso
             Contato contatoParaAtualizar = await _contatoRepository.BuscarContatoPorId(contato.Id);
             if (contatoParaAtualizar == null)
             {
-                return;                
+                return;
             }
             Contato novoContato = new Contato
             {

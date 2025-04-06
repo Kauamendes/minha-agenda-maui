@@ -31,19 +31,19 @@ namespace MinhaAgenda.Plugins.SqlLite
 
         public async Task AtualizarContatoAsync(Contato contato)
         {
-           var colunasAfetadas = await _database.UpdateAsync(contato);
+            var colunasAfetadas = await _database.UpdateAsync(contato);
             if (colunasAfetadas <= 0)
                 throw new InvalidOperationException("Erro ao atualizar contato");
         }
-        
+
         public Task<Contato> BuscarContatoPorId(Guid id)
         {
-           return BuscarContatoPorIdAsync(id);
+            return BuscarContatoPorIdAsync(id);
         }
 
         public async Task<Contato> BuscarContatoPorIdAsync(Guid id)
         {
-           return await _database.Table<Contato>().Where(c => c.Id == id).FirstOrDefaultAsync();
+            return await _database.Table<Contato>().Where(c => c.Id == id).FirstOrDefaultAsync();
         }
         public Task<List<Contato>> BuscarContatos(string filtro)
         {
@@ -90,7 +90,7 @@ namespace MinhaAgenda.Plugins.SqlLite
         {
             var contatoExcluir = await BuscarContatoPorIdAsync(contato.Id);
             if (contatoExcluir != null && contato.Id.Equals(contatoExcluir.Id))
-                await _database.DeleteAsync(contatoExcluir);            
+                await _database.DeleteAsync(contatoExcluir);
         }
     }
 }

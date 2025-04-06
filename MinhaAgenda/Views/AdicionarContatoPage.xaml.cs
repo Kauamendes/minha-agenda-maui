@@ -5,11 +5,11 @@ namespace MinhaAgenda.Views;
 public partial class AdicionarContatoPage : ContentPage
 {
     private readonly IAdicionarContatoUseCase _adicionarContatoUseCase;
-	public AdicionarContatoPage(IAdicionarContatoUseCase adicionarContatoUseCase)
-	{
-		InitializeComponent();
+    public AdicionarContatoPage(IAdicionarContatoUseCase adicionarContatoUseCase)
+    {
+        InitializeComponent();
         _adicionarContatoUseCase = adicionarContatoUseCase;
-	}
+    }
 
     private async void contatoCtrl_OnSave(object sender, EventArgs e)
     {

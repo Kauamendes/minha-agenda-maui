@@ -10,6 +10,7 @@ namespace MinhaAgenda
             //Routing.RegisterRoute(nameof(ContatosPage), typeof(ContatosPage));
             Routing.RegisterRoute(nameof(EditarContatoPage), typeof(EditarContatoPage));
             Routing.RegisterRoute(nameof(AdicionarContatoPage), typeof(AdicionarContatoPage));
+            Routing.RegisterRoute(nameof(AdicionarObservacaoPage), typeof(AdicionarObservacaoPage));
         }
     }
 }

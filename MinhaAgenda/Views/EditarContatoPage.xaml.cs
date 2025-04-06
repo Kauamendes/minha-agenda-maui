@@ -11,8 +11,8 @@ public partial class EditarContatoPage : ContentPage
     private readonly IEditarContatoUseCase _editarContatoUseCase;
     private readonly IVisualizarContatosUseCase _visualizarContatosUseCase;
     public EditarContatoPage(IEditarContatoUseCase editarContatoUseCase, IVisualizarContatosUseCase visualizarContatoUseCase)
-	{
-		InitializeComponent();
+    {
+        InitializeComponent();
         _editarContatoUseCase = editarContatoUseCase;
         _visualizarContatosUseCase = visualizarContatoUseCase;
     }
@@ -22,7 +22,7 @@ public partial class EditarContatoPage : ContentPage
         set
         {
             contato = _visualizarContatosUseCase.ExecutaAsync(Guid.Parse(value)).GetAwaiter().GetResult();
-            if(contato != null)
+            if (contato != null)
             {
                 contatosCtrl.Name = contato.Nome;
                 contatosCtrl.Phone = contato.Fone;

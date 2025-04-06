@@ -1,6 +1,6 @@
+using System.Collections.ObjectModel;
 using CasosDeUso.Interface;
 using CoreBusiness.Entidades;
-using System.Collections.ObjectModel;
 
 namespace MinhaAgenda.Views;
 
@@ -8,15 +8,15 @@ public partial class ContatosPage : ContentPage
 {
     private readonly IVisualizarContatosUseCase _visualizarContatosUseCase;
     private readonly IApagarContatoUseCase _apagarContatoUseCase;
- 
-        
-    public ContatosPage(IVisualizarContatosUseCase visualizarContatosUseCase, 
+
+
+    public ContatosPage(IVisualizarContatosUseCase visualizarContatosUseCase,
             IApagarContatoUseCase apagarContatoUseCase)
-	{
-		InitializeComponent();
+    {
+        InitializeComponent();
         this._visualizarContatosUseCase = visualizarContatosUseCase;
         this._apagarContatoUseCase = apagarContatoUseCase;
-	}
+    }
 
     protected override void OnAppearing()
     {
@@ -45,7 +45,7 @@ public partial class ContatosPage : ContentPage
 
     private async void listaContatos_ItemSelected(object sender, SelectedItemChangedEventArgs e)
     {
-        if(listaContatos.SelectedItem != null)
+        if (listaContatos.SelectedItem != null)
         {
             await Shell.Current.GoToAsync($"{nameof(EditarContatoPage)}?Id={((Contato)listaContatos.SelectedItem).Id}");
         }

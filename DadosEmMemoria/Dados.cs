@@ -2,11 +2,11 @@
 using CoreBusiness.Entidades;
 
 namespace MinhaAgenda.Plugins.DadosEmMemoria
-{   
+{
     public class Dados : IRepositorioDeContatos
     {
         public static List<Contato> _contatos;
-        
+
         public Dados()
         {
             _contatos = new List<Contato>()
@@ -20,7 +20,7 @@ namespace MinhaAgenda.Plugins.DadosEmMemoria
         }
         public Task AdicionarContato(Contato contato)
         {
-            if(_contatos == null) _contatos = new List<Contato>();
+            if (_contatos == null) _contatos = new List<Contato>();
             _contatos.Add(contato);
             return Task.CompletedTask;
         }
@@ -34,7 +34,7 @@ namespace MinhaAgenda.Plugins.DadosEmMemoria
 
         public Task AtualizarContato(Contato contato)
         {
-           var contatoAtualizar = _contatos.FirstOrDefault(c => c.Id == contato.Id);
+            var contatoAtualizar = _contatos.FirstOrDefault(c => c.Id == contato.Id);
             if (contatoAtualizar != null)
             {
                 contatoAtualizar.Nome = contato.Nome;
@@ -66,7 +66,7 @@ namespace MinhaAgenda.Plugins.DadosEmMemoria
 
         public Task<List<Contato>> BuscarContatos(string filtro)
         {
-            if(string.IsNullOrWhiteSpace(filtro))
+            if (string.IsNullOrWhiteSpace(filtro))
             {
                 return Task.FromResult(_contatos);
             }
@@ -74,7 +74,7 @@ namespace MinhaAgenda.Plugins.DadosEmMemoria
             var contatosPorFone = _contatos.Where(x => !string.IsNullOrWhiteSpace(x.Fone) && x.Fone.Contains(filtro, StringComparison.OrdinalIgnoreCase)).ToList();
             var contatosPorEmail = _contatos.Where(x => !string.IsNullOrWhiteSpace(x.Email) && x.Email.Contains(filtro, StringComparison.OrdinalIgnoreCase)).ToList();
             var contatosPorEndereco = _contatos.Where(x => !string.IsNullOrWhiteSpace(x.Endereco) && x.Endereco.Contains(filtro, StringComparison.OrdinalIgnoreCase)).ToList();
-                        
+
             return Task.FromResult(contatosPorNome.Union(contatosPorFone).Union(contatosPorEmail).Union(contatosPorEndereco).ToList());
         }
 
@@ -85,10 +85,10 @@ namespace MinhaAgenda.Plugins.DadosEmMemoria
 
         public Task ExcluirContato(Contato contato)
         {
-            if(contato != null && contato.Id != Guid.Empty)
+            if (contato != null && contato.Id != Guid.Empty)
             {
-               _contatos.Remove(contato);
-               return Task.CompletedTask;
+                _contatos.Remove(contato);
+                return Task.CompletedTask;
             }
             else
             {

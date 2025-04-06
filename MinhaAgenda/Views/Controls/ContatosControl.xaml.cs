@@ -7,9 +7,9 @@ public partial class ContatosControl : ContentView
     public event EventHandler<EventArgs> OnCancel;
 
     public ContatosControl()
-	{
-		InitializeComponent();
-	}
+    {
+        InitializeComponent();
+    }
 
     public string Name
     {
@@ -66,9 +66,9 @@ public partial class ContatosControl : ContentView
             OnError?.Invoke(sender, "Um nome é obrigatório");
             return;
         }
-        if(emailValidator.IsNotValid)
+        if (emailValidator.IsNotValid)
         {
-            foreach(var error in emailValidator.Errors!)
+            foreach (var error in emailValidator.Errors!)
             {
                 OnError?.Invoke(sender, error.ToString());
             }

@@ -1,11 +1,6 @@
 ﻿using CasosDeUso.Interface;
 using CasosDeUso.PluginsInterfaces;
 using CoreBusiness.Entidades;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CasosDeUso
 {
