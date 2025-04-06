@@ -7,6 +7,11 @@ namespace MinhaAgenda.Plugins.SqlLite
     public class RepositorioObservacaoSqlLite : IRepositorioDeObservacoes
     {
         private SQLiteAsyncConnection _database;
+        public RepositorioObservacaoSqlLite()
+        {
+            _database = new SQLiteAsyncConnection(Constantes._databasepath);
+            _database.CreateTableAsync<Observacao>().Wait();
+        }
 
         public Task AdicionarObservacao(Observacao observacao)
         {
@@ -25,6 +30,8 @@ namespace MinhaAgenda.Plugins.SqlLite
 
         public async Task<List<Observacao>> BuscarTodosObservacoesAsync()
         {
+            Console.WriteLine("[LOG] Iniciando busca de observações...");
+
             return await _database.Table<Observacao>().ToListAsync();
         }
     }

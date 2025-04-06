@@ -1,18 +1,19 @@
-<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MinhaAgenda.Views.ListarObservacoesPage"
              Title="Observações"
              BackgroundColor="White">
 
-    <VerticalStackLayout Padding="16" Spacing="16">
+    <Grid RowDefinitions="Auto,*,Auto" Padding="16">
 
         <Label Text="Minhas Observações"
                FontAttributes="Bold"
                FontSize="20"
-               HorizontalOptions="Center" />
+               HorizontalOptions="Center"
+               Grid.Row="0" />
 
         <CollectionView x:Name="listaObservacoes"
+                        Grid.Row="1"
                         ItemsLayout="VerticalList"
                         SelectionMode="None"
                         BackgroundColor="Transparent">
@@ -23,19 +24,22 @@
                            BackgroundColor="#e3f2fd"
                            CornerRadius="8"
                            HasShadow="False">
-                        <Label Text="{Binding Texto}"
-                               FontSize="16"
-                               TextColor="Black" />
+                        <Grid ColumnDefinitions="*, Auto">
+                            <Label Text="{Binding Texto}"
+                                   FontSize="16"
+                                   TextColor="Black" />
+                        </Grid>
                     </Frame>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
-
+        
         <Button Text="Adicionar Observação"
+                Grid.Row="2"
                 Clicked="Button_Clicked"
                 BackgroundColor="#1976d2"
                 TextColor="White"
                 CornerRadius="8"
                 FontAttributes="Bold" />
-    </VerticalStackLayout>
+    </Grid>
 </ContentPage>

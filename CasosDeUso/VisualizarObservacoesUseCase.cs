@@ -16,6 +16,9 @@ namespace CasosDeUso
 
         public Task<List<Observacao>> ExecutaList()
         {
+            Console.WriteLine(_repositorioDeObservacoes);
+
+            Console.WriteLine("[LOG] Iniciando busca de observações...");
 
             return _repositorioDeObservacoes.BuscarObservacoes();
         }
